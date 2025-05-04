@@ -1,47 +1,43 @@
-# Week two Assignment 
-#  Create an empty list called my_list.
-my_list = []
+# text = """Classes define blueprints, while objects are the instances of classes.
 
-# Append the following elements to my_list: 10, 20, 30, 40.
+# Inheritance supports code reuse, allowing child classes to inherit behavior.
 
-my_list.append(10)
-my_list.append(20)
-my_list.append(30)
-my_list.append(40)
+# Encapsulation ensures objects manage their internal states through methods.
 
-print(my_list)
+# Python supports multiple inheritance, allowing a class to inherit from multiple classes.
 
-# Insert the value 15 at the second position in the list.
-my_list.insert(2,15)
+# Abstraction simplifies complex systems by exposing only essential object properties."""
 
-print(my_list)
+# with open("assignment.txt", "w") as file:
+#     file.write(text)
 
-# Extend my_list with another list: [50, 60, 70].
-second_list = [50,60,70]
-my_list.extend(second_list)
+#     print("'assignment.txt' created successfully")
 
-print(my_list)
+try: 
+    #Ask the user to insert the filename
 
-# Remove the last element from my_list.
-del my_list[-1]
+    input_filename = input("Enter the name of the file to read: ")
 
-print(my_list)
 
-# Sort my_list in ascending order.
+    with open(input_filename, "r") as infile:
+        content = infile.read()
 
-my_list.sort()
+    #modify the content(i.e., set to uppercase)
 
-print(my_list)
+    modified_content = content.upper()
 
-# Find and print the index of the value 30 in my_list.
+    #define the output file
 
-if 30 in my_list:
-    print(my_list.index(30))
-else:
-    print("30 is not in the list")
+    output_filename = "modified" + input_filename
 
-#solution 2
+    with open(output_filename, "w") as outfile:
+        outfile.write(modified_content)
 
-index_30 = my_list.index(30)
 
-print(index_30)
+    print(f"\n✅ Modified content has been written to '{output_filename}'.")
+
+
+except FileNotFoundError:
+       print(" The file does not exist.")
+except IOError:
+    print(" Could not read or write to the file.")
